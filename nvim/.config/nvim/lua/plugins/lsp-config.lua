@@ -29,6 +29,7 @@ return {
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show LSP hover" })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions 🦸" })
+            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
 
             -- neovim-tasks suggested this.
             vim.lsp.config("clangd", {
