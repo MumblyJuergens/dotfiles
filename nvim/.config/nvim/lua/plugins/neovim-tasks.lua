@@ -1,5 +1,6 @@
 return {
     "Shatur/neovim-tasks",
+    enabled = false,
     config = function()
         local Path = require("plenary.path")
         require("tasks").setup({
@@ -10,7 +11,7 @@ return {
                     build_kit = "default",                                                           -- default build kit, can be changed using `:Task set_module_param cmake build_kit`.
                     dap_name = "codelldb",                                                           -- DAP configuration name from `require('dap').configurations`. If there is no such configuration, a new one with this name as `type` will be created.
                     build_dir = tostring(Path:new("{cwd}", "build", "{build_kit}", "{build_type}")), -- Build directory. The expressions `{cwd}`, `{build_kit}` and `{build_type}` will be expanded with the corresponding text values. Could be a function that return the path to the build directory.
-                    cmake_kits_file = nil,                                                           -- set path to JSON file containing cmake kits
+                    cmake_kits_file = tostring(Path:new("{cwd}", "nvtasks", "build_kits.json")),                                                           -- set path to JSON file containing cmake kits
                     cmake_build_types_file = nil,                                                    -- set path to JSON file containing cmake kits
                     clangd_cmdline = {
                         "clangd",
@@ -21,7 +22,7 @@ return {
                         "--offset-encoding=utf-8",
                         "-j=4",
                     },                                     -- command line for invoking clangd - this array will be extended with --compile-commands-dir and --query-driver after each cmake configure with parameters inferred from build_kit, build_type and build_dir
-                    ignore_presets = false,                -- if true, cmake presets will not be used, build_kit and build_type will be used instead even if CMakePresets.json or CMakeUserPresets.json files are present in the project root.
+                    ignore_presets = true,                -- if true, cmake presets will not be used, build_kit and build_type will be used instead even if CMakePresets.json or CMakeUserPresets.json files are present in the project root.
                     restart_clangd_after_configure = true, -- if true, clangd will be restarted after each cmake configure with updated compile_commands.json file and --query-driver parameters mattching current cmake build_kit and build_type or build_preset.
                 },
                 bazel = {
@@ -109,6 +110,13 @@ return {
         -- if project is using presets, provide preset selection for both <leader>cv and <leader>ck
         -- if not, provide build type (<leader>cv) and kit (<leader>ck) selection
 
+        -- Nicked from lualine example to make sense in my set up.
+		local ProjectConfig = require("tasks.project_config")
+        local cmake_utils = require("tasks.cmake_utils.cmake_utils")
+        local cmake_presets = require("tasks.cmake_utils.cmake_presets")
+        local tasks = require("tasks")
+
+        cmake_utils.getCMakeKits()
         local function selectPreset()
             local availablePresets = cmake_presets.parse("buildPresets")
 
@@ -136,7 +144,7 @@ return {
             end
         end
 
-        vim.keymap.set("n", "<leader>ck", selectBuildKitOrPreset, { silent = true })
+        vim.keymap.set("n", "<leader>ck", selectBuildKitOrPreset, { silent = true, desc = "CMake select kit or preset" })
 
         local function selectBuildTypeOrPreset()
             if cmake_utils.shouldUsePresets() then
@@ -146,6 +154,8 @@ return {
             end
         end
 
-        vim.keymap.set("n", "<leader>cv", selectBuildTypeOrPreset, { silent = true })
+        vim.keymap.set("n", "<leader>cv", selectBuildTypeOrPreset, { silent = true, desc = "CMake select build type or preset" })
+
     end,
+
 }

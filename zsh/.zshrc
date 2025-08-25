@@ -12,3 +12,13 @@ fi
 if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   source /usr/share/zsh/manjaro-zsh-prompt
 fi
+
+path+=('/home/mumbly/bin')
+path+=("/home/mumbly/.local/share/gem/ruby/3.4.0/bin")
+export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
+
+if [[ -e ~/.config/just/completions.zsh ]]; then
+  source ~/.config/just/completions.zsh
+fi
+
+

@@ -1,0 +1,2 @@
+
+command script import ~/.config/lldb/ignore_signals.py

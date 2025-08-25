@@ -32,9 +32,9 @@ return {
             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
 
             -- neovim-tasks suggested this.
-            vim.lsp.config("clangd", {
-                cmd = require("tasks.cmake_utils.cmake_utils").currentClangdArgs(),
-            })
+            --     vim.lsp.config("clangd", {
+            --         cmd = require("tasks.cmake_utils.cmake_utils").currentClangdArgs(),
+            --     })
         end,
     },
 }
