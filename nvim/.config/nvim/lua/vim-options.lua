@@ -5,6 +5,9 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set nowrap")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.cmd[[
+set exrc
+]]
 
 -- Remap window switching keys.
 -- vim.cmd("nnoremap <A-h> <C-W>h")

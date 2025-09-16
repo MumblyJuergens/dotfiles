@@ -1,0 +1,9 @@
+default:
+    @just --list
+
+dns-flush:
+    sudo resolvectl flush-caches
+
+dns-stats:
+    sudo resolvectl statistics
+

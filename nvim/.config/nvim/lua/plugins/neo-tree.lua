@@ -15,7 +15,7 @@ return {
         -- add options here
     },
     config = function()
-        vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle left<CR>", { desc = "Show neotree on left" })
+        vim.keymap.set("n", "<leader>n", ":Neotree filesystem toggle left<CR>", { desc = "Show neotree on left" })
         vim.keymap.set("n", "<leader>bv", ":Neotree buffers toggle right<CR>", { desc = "Show buffers on right" })
     end,
 }
