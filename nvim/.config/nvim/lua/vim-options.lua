@@ -7,6 +7,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.cmd[[
 set exrc
+set number
 ]]
 
 -- Remap window switching keys.
