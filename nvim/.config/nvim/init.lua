@@ -19,7 +19,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- Yes sir.
-require("nvcfg")
 require("vim-options")
 
 -- This is also a good place to setup other settings (vim.opt)
