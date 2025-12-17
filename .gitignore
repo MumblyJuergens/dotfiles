@@ -1,2 +1,4 @@
 nvim/.config/nvim/lazy-lock.json
 tmux/.config/tmux
+nvim/.config/nvim/CMakeCache.txt
+nvim/.config/nvim/CMakeFiles/cmake.check_cache

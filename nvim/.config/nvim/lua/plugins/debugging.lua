@@ -22,6 +22,7 @@ return {
 			end, { desc = "Toggle DAP visible" })
 
 			vim.keymap.set("n", "<F5>", dap.continue, { desc = "DAP continue" })
+            vim.keymap.set("n", "<leader>dp", ":DapPause", { desc = "Dap Pause" })
 			vim.keymap.set("n", "<F10>", dap.step_over, { desc = "DAP Step over" })
 			vim.keymap.set("n", "<F11>", dap.step_into, { desc = "DAP Step into" })
 			vim.keymap.set("n", "<F12>", dap.step_out, { desc = "DAP Step out" })

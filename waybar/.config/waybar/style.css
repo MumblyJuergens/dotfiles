@@ -96,6 +96,7 @@ button:hover {
 #mpd {
     padding: 0 10px;
     color: #ffffff;
+    border-radius: 8px;
 }
 
 #window,
@@ -348,4 +349,8 @@ label:focus {
     min-width: 10px;
     border-radius: 5px;
     background-color: orange;
+}
+
+#custom-power {
+    font-size: 22px;
 }

@@ -1,9 +1,18 @@
 @define-color window_bg_color #1f1f28;
 @define-color accent_bg_color #54546d;
 @define-color theme_fg_color #f2ecbc;
+@define-color error_bg_color #C34043;
+@define-color error_fg_color #DCD7BA;
 
 * {
   all: unset;
+}
+
+popover {
+  background: lighter(@window_bg_color);
+  border: 1px solid darker(@accent_bg_color);
+  border-radius: 18px;
+  padding: 10px;
 }
 
 .normal-icons {
@@ -28,7 +37,10 @@ scrollbar {
   border: 1px solid darker(@accent_bg_color);
 }
 
-.preview-box {
+.preview-box,
+.elephant-hint,
+.placeholder {
+  color: @theme_fg_color;
 }
 
 .box {
@@ -40,6 +52,10 @@ scrollbar {
 
 .input placeholder {
   opacity: 0.5;
+}
+
+.input selection {
+  background: lighter(lighter(lighter(@window_bg_color)));
 }
 
 .input {
@@ -74,7 +90,13 @@ child {
   padding: 10px;
 }
 
-child:hover .item-box,
+.item-quick-activation {
+  background: alpha(@accent_bg_color, 0.25);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* child:hover .item-box, */
 child:selected .item-box {
   background: alpha(@accent_bg_color, 0.25);
 }
@@ -82,26 +104,23 @@ child:selected .item-box {
 .item-text-box {
 }
 
-.item-text {
-}
-
 .item-subtext {
   font-size: 12px;
   opacity: 0.5;
 }
 
-.item-image {
-  margin-right: 10px;
+.providerlist .item-subtext {
+  font-size: unset;
+  opacity: 0.75;
 }
 
-.keybind-hints {
-  opacity: 0.5;
-  color: @theme_fg_color;
+.item-image-text {
+  font-size: 28px;
 }
 
 .preview {
   border: 1px solid alpha(@accent_bg_color, 0.25);
-  padding: 10px;
+  /* padding: 10px; */
   border-radius: 10px;
   color: @theme_fg_color;
 }
@@ -129,6 +148,60 @@ child:selected .item-box {
   font-weight: bold;
 }
 
+.bluetooth.disconnected {
+  opacity: 0.5;
+}
+
 .preview .large-icons {
   -gtk-icon-size: 64px;
+}
+
+.keybinds {
+  padding-top: 10px;
+  border-top: 1px solid lighter(@window_bg_color);
+  font-size: 12px;
+  color: @theme_fg_color;
+}
+
+.global-keybinds {
+}
+
+.item-keybinds {
+}
+
+.keybind {
+}
+
+.keybind-button {
+  opacity: 0.5;
+}
+
+.keybind-button:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.keybind-bind {
+  text-transform: lowercase;
+  opacity: 0.35;
+}
+
+.keybind-label {
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid @theme_fg_color;
+}
+
+.error {
+  padding: 10px;
+  background: @error_bg_color;
+  color: @error_fg_color;
+}
+
+:not(.calc).current {
+  font-style: italic;
+}
+
+.preview-content.archlinuxpkgs {
+  font-family: monospace;
 }

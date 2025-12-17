@@ -7,3 +7,11 @@ dns-flush:
 dns-stats:
     sudo resolvectl statistics
 
+sync-mjdrive:
+    rclone sync --progress /mnt/tertius/cloud/gdrive_mj GDriveMJ:
+
+sync-spencer:
+    rclone sync --progress /mnt/tertius/cloud/gdrivespencer GDriveSpencer:
+
+sync-all: sync-mjdrive sync-spencer
+    @echo Synchine google drives
