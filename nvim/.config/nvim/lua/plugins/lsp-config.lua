@@ -8,7 +8,7 @@ return {
 		opts = {},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "clangd", "cmake" },
+				ensure_installed = { "lua_ls", "clangd" },
 			})
 		end,
 	},
@@ -17,11 +17,14 @@ return {
 		config = function()
 			-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			-- local lspconfig = require("lspconfig")
+			vim.lsp.config('clangd', {
+				cmd = { "/usr/bin/clangd", "--experimental-modules-support", "--log=verbose" },
+			})
 			-- vim.lsp.config('lua_ls', {
 			--     capabilities = capabilities,
 			-- })
 			-- vim.lsp.config('clangd', {
-			--     capabilities = capabilities,
+			-- capabilities = capabilities,
 			-- })
 			-- vim.lsp.config('cmake', {
 			--     capabilities = capabilities,

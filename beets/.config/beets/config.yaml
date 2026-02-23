@@ -1,0 +1,8 @@
+directory: /mnt/tertius/audio/music
+library: /mnt/tertius/audio/beetslibrary.db
+
+import:
+    copy: yes
+
+plugins:
+ - musicbrainz
