@@ -34,15 +34,36 @@
         // "battery#bat2",
         "clock",
         "tray",
+	"custom/notification",
         "custom/power"
     ],
     // Modules configuration
+    "custom/notification": {
+    	"tooltip": true,
+    	"format": "<span size='10pt'> {icon} </span>",
+    	"format-icons": {
+      	    "notification": "󱅫",
+            "none": "󰂜",
+            "dnd-notification": "󰂠",
+            "dnd-none": "󰪓",
+            "inhibited-notification": "󰂛",
+            "inhibited-none": "󰪑",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+	"on-click": "swaync-client -t -sw",
+	"on-click-right": "swaync-client -d -sw",
+    	"escape": true
+    },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "warp-on-scroll": false,
         // "format": "{name}: {icon}",
-        "format": "{icon}",
+        "format": "{name}",
         "format-icons": {
             "1": "",
             "2": "",
@@ -242,8 +263,8 @@
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
+			"shutdown": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'",
+			"reboot": "hyprshutdown -t 'Restarting...' --post-cmd 'reboot'",
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
