@@ -265,15 +265,15 @@ hl.gesture({
 
 -- Example per-device config
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
-})
+-- hl.device({
+--     name        = "epic-mouse-v1",
+--     sensitivity = -0.5,
+-- })
 
-hl.device({
-    name = "huion-huion-tablet-pen",
-    output = "HDMI-A-1",
-})
+-- hl.device({
+--     name = "huion-huion-tablet-pen",
+--     output = "HDMI-A-1",
+-- })
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -308,6 +308,9 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" 
 hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.move({ direction = "up" }) )
 hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "down" }) )
 
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(uwsm("grimblast copysave area")))
+hl.bind(mainMod .. " + CTRL + SHIFT + S", hl.dsp.exec_cmd(uwsm("grimblast copysave active")))
+
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
@@ -335,6 +338,8 @@ hl.define_submap("quickl", "reset", function ()
     hl.bind("m", hl.dsp.exec_cmd(uwsm("vivaldi --app=https://messages.google.com/web/conversations")))
     hl.bind("p", hl.dsp.exec_cmd(uwsm("vivaldi --app=https://photos.google.com/")))
     hl.bind("ALT + s", hl.dsp.exec_cmd(uwsm("grimblast save screen")))
+    hl.bind("x",  hl.dsp.exec_cmd(uwsm("/home/mumbly/me/bin/sunshine_on")))
+    hl.bind("ALT + x",  hl.dsp.exec_cmd(uwsm("/home/mumbly/me/bin/sunshine_off")))
     hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
@@ -395,6 +400,23 @@ hl.window_rule({
     float = true,
 })
 
+hl.window_rule({
+    name = "float-dev-blender-file",
+    match = { title = "File Browser" },
+    float = false,
+})
+
+hl.window_rule({
+    name = "float-dev-decap",
+    match = { class = "Decap" },
+    float = true,
+})
+
+hl.window_rule({
+    name = "float-dev-partyon",
+    match = { class = "PartyOn" },
+    float = true,
+})
 -- Layer rules also return a handle.
 -- local overlayLayerRule = hl.layer_rule({
 --     name  = "no-anim-overlay",
